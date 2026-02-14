@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
+    <title>LOVE NOTES</title>
+</head>
+<body>
+    <nav>
+        <img src="./assets/logo.jpg" alt="">
+        <div class="list">
+            <a href="">Home</a>
+            <a href="">Message</a>
+            <a href="">About</a>
+        </div>
+    </nav>
+    <section class="hero">
+        <div class="heading">
+            <h1>Celebrate Your Loved Ones <br> With A <span>Heartfelt Message.</span></h1>
+        </div>
+        <div class="sub">
+            <p>Create beautiful, special and personalised messages for your family, friends and <br> loved ones. Perfect for any special occasion.</p>
+        </div>
+        <div class="btn">
+            <button><img src="./assets/heart.png" alt=""> <a href="#form">Create A Love Note</a></button>
+            <button><img src="./assets/flowers.jpg" alt=""> Explore Occasions</button>
+        </div>
+    </section>
+    <div id="form"></div>
+    <section class="form-container">
+        <div class="note">
+            <h1>Create A Love Note</h1>
+            <p>Write a heartfelt message for your loved one.</p>
+        </div>
+        <div class="former">
+            <form action="" onsubmit="return false">
+                <div class="forms">
+                    <div class="f1">
+                        <label for="name" class="l1">Your Name<span>*</span></label> <br>
+                        <input type="text" name="" id="input">
+                    </div>
+                    <div class="f1">
+                        <label for="name" class="l2">Recipient Name<span>*</span></label> <br>
+                        <input type="text" name="" id="recipient">
+                    </div>
+                    
+                </div>
+                <div class="forms">
+                    <div class="f1">
+                        <label for="name" class="l3">Occasion<span>*</span></label> <br>
+                        <select name="occasion" id="occasion" class="select">
+                            <option value="">Select An Occasion</option>
+                            <option value="">Valentine</option>
+                            <option value="">Birthday</option>
+                            <option value="">Anniversary</option>
+                            <option value="">Graduation</option>
+                            <option value="">Matriculation</option>
+                        </select>
+                    </div>
+                    <div class="f1">
+                        <label for="name" class="l4">Theme<span>*</span></label> <br>
+                        <select name="theme" id="theme" class="select">
+                            <option value="">Select a Theme</option>
+                            <option value="">Romantic</option>
+                            <option value="">Flirting</option>
+                            <option value="">Friedly</option>
+                            <option value="">Gratitude</option>
+                            <option value="">Apology</option>
+                            <option value="">Encouragement</option>
+                            <option value="">Funny/Sarcastic</option>
+                        </select>
+                    </div>
+                    
+                </div>
+                <label for="text" class="l5">Enter Your Message <span>*</span></label> <br>
+                <textarea name="" id="message"></textarea>
+                <div class="btn2">
+                    <button onclick="previewMessage()">Preview</button>
+                    <button onclick="generateLink()">Generate Link</button>
+                </div>
+            </form>
+            <div id="preview"></div>
+            <div id="link"></div>
+        </div>
+    </section>
+    <div id="float-container"></div>
+
+    <script src="./script.js"></script>
+</body>
+</html>
