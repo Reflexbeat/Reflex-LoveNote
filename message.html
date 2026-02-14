@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
+    <title>Message</title>
+</head>
+<body>
+    <nav>
+        <img src="./assets/logo.jpg" alt="">
+        <div class="list">
+            <a href="">Message</a>
+            <a href="./index.html">Back</a>
+        </div>
+    </nav>
+    <section class="hero">
+        <h1>Write Your Message!</h1>
+        <p><span>Simply put your emotions & feelings to writting.</span></p>
+    </section>
+    <section class="form-container">
+        
+            <form action="" method="post">
+                <div class="forms">
+                    <div class="f1">
+                        <label for="sender" class="l1">From<span>*</span></label> <br>
+                        <input type="text" name="sender" id="sender" required>
+                    </div>
+                    <div class="f1">
+                        <label for="recipient" class="l2">To<span>*</span></label> <br>
+                        <input type="text" name="recipient" id="recipient" required>
+                    </div>
+
+                </div>
+                <div class="forms">
+                    <div class="f1">
+                        <label for="occasion" class="l3">Occasion<span>*</span></label> <br>
+                        <select name="occasion" id="occasion" class="select" required>
+                            <option value="">------------------</option>
+                            <option value="valentine">Valentine</option>
+                            <option value="birthday">Birthday</option>
+                            <option value="anniversary">Anniversary</option>
+                            <option value="graduation">Graduation</option>
+                            <option value="newyear">New Year</option>
+                            <option value="christmas">Christmas</option>
+                        </select>
+                    </div>
+                    <div class="f1">
+                        <label for="theme" class="l4">Theme<span>*</span></label> <br>
+                        <select name="theme" id="theme" class="select" required>
+                            <option value="">------------------</option>
+                            <option value="romantic">Romantic</option>
+                            <option value="flirting">Flirting</option>
+                            <option value="friendly">Friedly</option>
+                            <option value="gratitude">Gratitude</option>
+                            <option value="apology">Apology</option>
+                            <option value="encouragement">Encouragement</option>
+                            <option value="funny">Funny/Sarcastic</option>
+                        </select>
+                    </div>
+
+                </div>
+                <label for="text" class="l5">Enter Your Message<span>*</span></label> <br>
+                <textarea name="" id="message" required></textarea>
+                <div class="btn2">
+                    <button type="button" onclick="previewMessage()">Preview</button>
+                    <button type="button" onclick="generateLink()">Generate Link</button>
+                </div>
+            </form>
+            <div id="preview"></div>
+            <div id="link"></div>
+            <div id="share-buttons" style="margin-top:10px; display:none;"> 
+                <button type="button" onclick="shareWhatsApp()">Share on WhatsApp</button> 
+                <!-- <button type="button" onclick="shareFacebook()">Share on Facebook</button>  -->
+                <!-- <button type="button" onclick="shareTwitter()">Share on Twitter</button>  -->
+                <button type="button" onclick="copyLink()">Copy Link</button> 
+            </div>
+    </section>
+    <div id="float-container"></div>
+    <script src="./script.js"></script>
+</body>
+</html>
