@@ -65,10 +65,10 @@ function generateLink() {
 }
 
 // WhatsApp share
-function shareWhatsapp() {
-    const url = "https://wa.me/?text=" + encodeURIComponent("Check out this message: " + generatedLink);
-    window.open(url, "_blank");
-}
+// function shareWhatsapp() {
+//     const url = "https://wa.me/?text=" + encodeURIComponent("Check out this message: " + generatedLink);
+//     window.open(url, "_blank");
+// }
 
 // Copy link
 function copyLink() {
@@ -159,6 +159,25 @@ menuIcons.addEventListener("click", () => {
     menuIcons.classList.add("fa-bars")
   }
 });
+
+
+//Funtion to Auto-Capitalize
+function autoCapitalize(element){
+  return element.replace(/\b\w/g, function(char){
+    return char.toUpperCase();
+  });
+}
+
+function capitalization(text) {
+  text.addEventListener("input", function() {
+    this.value = autoCapitalize(this.value)
+  });
+}
+
+capitalization(document.getElementById("sender"));
+capitalization(document.getElementById("recipient"));
+capitalization(document.getElementById("message"));
+
 
 
 // const toggle = document.getElementById("menu-bar");

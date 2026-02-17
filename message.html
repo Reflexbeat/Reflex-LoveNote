@@ -49,8 +49,8 @@
                 <div class="forms">
                     <div class="f1">
                         <label for="occasion" class="l3">Occasion<span>*</span></label> <br>
-                        <select name="occasion" id="occasion" class="select" required>
-                            <option value="">------------------</option>
+                        <select name="occasion" id="occasion" class="select">
+                            <option value="">-----------</option>
                             <option value="valentine">Valentine</option>
                             <option value="birthday">Birthday</option>
                             <option value="anniversary">Anniversary</option>
@@ -62,10 +62,12 @@
                     <div class="f1">
                         <label for="theme" class="l4">Theme<span>*</span></label> <br>
                         <select name="theme" id="theme" class="select" required>
-                            <option value="">------------------</option>
+                            <option value="">-----------</option>
                             <option value="romantic">Romantic</option>
                             <option value="flirting">Flirting</option>
+                            <option value="friendly">celebratory</option>
                             <option value="friendly">Friedly</option>
+                            <option value="friendly">congratulatory</option>
                             <option value="gratitude">Gratitude</option>
                             <option value="apology">Apology</option>
                             <option value="encouragement">Encouragement</option>
@@ -84,7 +86,7 @@
             <div id="preview"></div>
             <div id="link"></div>
             <div id="share-buttons" style="margin-top:10px; display:none;"> 
-                <button type="button" onclick="shareWhatsApp()">Share on WhatsApp</button> 
+                <!-- <button type="button" onclick="shareWhatsApp()">Share on WhatsApp</button>  -->
                 <!-- <button type="button" onclick="shareFacebook()">Share on Facebook</button>  -->
                 <!-- <button type="button" onclick="shareTwitter()">Share on Twitter</button>  -->
                 <button type="button" onclick="copyLink()">Copy Link</button> 
