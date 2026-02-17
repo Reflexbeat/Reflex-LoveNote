@@ -313,6 +313,7 @@ textarea {
     border-radius: 10px;
     background-color: rgb(7, 7, 140);
     color: #fff;
+    font-weight: bold;
 }
 
 .btn2 button:nth-child(2){
@@ -351,6 +352,7 @@ textarea {
     display: flex;
     justify-content: center;
     align-items: center;
+    /* font-weight: bold; */
     
 }
 
@@ -364,6 +366,7 @@ textarea {
     margin: 30px 20px;
     cursor: pointer;
     gap: 30px;
+    font-weight: bold;
 }
 
 footer {
@@ -379,8 +382,23 @@ footer h1 {
     margin-top: 20px;
 }
 
+.socials{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: larger;
+    color: yellow;
+    margin-bottom: 20px;
+    gap: 40px;
+}
+
+.socials a{
+    color: rgb(179, 179, 28);
+}
+
 .pp {
     font-size: x-small;
+    padding-bottom: 30px;
 }
 
 /* Valentine Page */
@@ -707,9 +725,21 @@ footer h1 {
         padding: 12px;
     }
 
+    #share-buttons{
+        margin-right: 35px;
+    }
+
+    #share-buttons button{
+        width: 100%;
+    }
+
     #preview {
         margin-top: 10vh;
         font-size: 16px;
+    }
+
+    footer{
+        height: auto;
     }
 
     footer h1 {
