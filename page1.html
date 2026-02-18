@@ -25,8 +25,43 @@
         <h1>Greeting Card Message Templates.</h1>
         <p>Browse our collection of pre-written greeting card messages. Copy and customize them to your standard.</p>
     </section>
-    <section class="card-containner">
-        <div class="card">
+
+    <section class="filter-bar">
+        <input type="text" name="search" id="searchbar" placeholder="Search messages, occasions or tones....">
+        <!-- <button onclick="searchContent()"></button> -->
+<!-- 
+        <select name="occasion" id="occasionfilter">
+            <option value="all">All Occasions</option>
+            <option value="anniversary">Anniversary</option>
+            <option value="birthday">Birthday</option>
+            <option value="christmas">Christmas</option>
+            <option value="eid">Eid Mubarak</option>
+            <option value="valentine">Valentine</option>
+            <option value="easter">Easter</option>
+            <option value="graduation">Graduation</option>
+            <option value="father">Father's Day</option>
+            <option value="mother">Mother's Day</option>
+            <option value="new">New Year</option>
+        </select>
+        <select name="tone" id="tonefilter">
+            <option value="all">All Tones</option>
+            <option value="romantic">Romantic</option>
+            <option value="religious">Religious</option>
+            <option value="professional">Professional</option>
+            <option value="friendly">Friendly</option>
+            <option value="congratulatory">Congratulatory</option>
+            <option value="celebratory">Celebratory</option>
+            <option value="appreciation">Appreciation</option>
+            <option value="encouragement">Encouragement</option>
+            <option value="forgiveness">Forgiveness</option>
+            <option value="apology">Apology</option>
+        </select> -->
+    </section>
+
+    <section class="card-containner" id="card-containner">
+        <div class="card"
+              data-occasion="birthday"
+              data-tone="congratulatory">
             <h4>Birthday</h4>
             <p><span>Milestone•</span></p>
             <div class="card-content">
@@ -39,7 +74,9 @@
         </div>
         <div id="toast">Copied</div>
 
-        <div class="card">
+        <div class="card" 
+              data-occasion="valentine"
+              data-tone="romantic">
             <h4>Valentine🌹</h4>
             <p><span>Romantic•</span></p>
             <div class="card-content">
@@ -53,7 +90,10 @@
             <button class="copy-btn">Copy</button>
         </div>
         <div id="toast">Copied</div>
-        <div class="card">
+
+        <div class="card"
+              data-occasion="christmas"
+              data-tone="religious">
             <h4>Christmas</h4>
             <p><span>Religious•</span></p>
             <div class="card-content">
@@ -558,6 +598,7 @@
         <div id="toast">Copied</div>
 
     </section>
+
     <script src="./script.js"></script>
 </body>
 

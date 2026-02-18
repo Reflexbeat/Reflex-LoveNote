@@ -162,21 +162,140 @@ menuIcons.addEventListener("click", () => {
 
 
 //Funtion to Auto-Capitalize
-function autoCapitalize(element){
-  return element.replace(/\b\w/g, function(char){
-    return char.toUpperCase();
+// function autoCapitalize(element){
+//   return element.replace(/\b\w/g, function(char){
+//     return char.toUpperCase();
+//   });
+// }
+
+// function capitalization(text) {
+//   text.addEventListener("input", function() {
+//     this.value = autoCapitalize(this.value)
+//   });
+// }
+
+// capitalization(document.getElementById("sender"));
+// capitalization(document.getElementById("recipient"));
+// capitalization(document.getElementById("message"));
+
+
+//SEARCH & FILTER SECTION
+const searchBar = document.getElementById("searchbar")
+const cards = document.querySelectorAll(".card");
+
+searchBar.addEventListener("input", function () {
+  const value = this.value.toLowerCase();
+
+  cards.forEach(card => {
+    const occasion = card.querySelector("h4").innerText.toLowerCase();
+    const tone = card.querySelector("span").innerText.toLowerCase();
+    const message = card.querySelector(".card-content p").innerText.toLowerCase();
+
+    const fullText = occasion + " " + tone + " " + message;
+
+    if (fullText.includes(value)){
+      card.style.display = "block";
+    }else{
+      card.style.display = "none";
+    }
   });
+});
+
+function highLight(text, value){
+  if(!value) return text;
+  const regex = new RegExp(`(${value})`, "gi");
+  return text.replace(regex, "<mark>$1</mark>");
 }
 
-function capitalization(text) {
-  text.addEventListener("input", function() {
-    this.value = autoCapitalize(this.value)
-  });
-}
 
-capitalization(document.getElementById("sender"));
-capitalization(document.getElementById("recipient"));
-capitalization(document.getElementById("message"));
+// document.addEventListener("DOMContentLoaded", function () {
+//   const occasionSelect = document.getElementById("occasionfilter");
+//   const toneSelect = document.getElementById("tonefilter");
+//   const cards = document.querySelectorAll(".card");
+
+//   function filterCards() {
+//     const selectedOccasion = occasionSelect.value;
+//     const selectedTone = toneSelect.value;
+
+//     cards.forEach(card => {
+//       const cardOccasion = card.getAttribute("data-occasion");
+//       const cardTone = card.getAttribute("data-tone");
+
+//       const occasionMatch = (selectedOccasion === "all" || cardOccasion === selectedOccasion);
+//       const toneMatch = (selectedTone === "all" || cardTone === selectedTone);
+
+//       if (occasionMatch && toneMatch) {
+//         card.style.display = "block"; // Show card
+//       } else {
+//         card.style.display = "none"; // Hide card
+//       }
+//     });
+//   }
+
+//   // Attach event listeners
+//   occasionSelect.addEventListener("change", filterCards);
+//   toneSelect.addEventListener("change", filterCards);
+
+//   filterCards();
+//   // console.log(filterCards)
+// });
+
+
+// script.js
+// const filterSelect = document.getElementById("occasionfilter");
+// const cards = document.querySelectorAll(".card");
+
+// filterSelect.addEventListener("change", () => {
+//   const selected = filterSelect.value.toLowerCase();
+
+//   cards.forEach(card => {
+//     const occasion = card.getAttribute("data-occasion").toLowerCase();
+//     const tone = card.getAttribute("data-tone").toLowerCase();
+
+//     if (selected === "" || occasion === selected || tone === selected) {
+//       card.style.display = "block";
+//     } else {
+//       card.style.display = "none";
+//     }
+//   });
+// });
+
+  
+
+// const searchInput = document.getElementById("search");
+// const occasionfilter = document.getElementById("occasionfilter");
+// const tonefilter = document.getElementById("tonefilter");
+// const cards = document.querySelectorAll(".card");
+
+// function filterTemplates(){
+//   const searchValue = searchInput.value.toLowerCase();
+//   const occasionValue = occasionfilter.value.toLowerCase();
+//   const toneValue = tonefilter.value.toLowerCase();
+
+//   cards.forEach(card => {
+//     const text = card.querySelector(".card-content p").innerText.toLowerCase();
+//     const occasion = card.dataset.occasion.toLowerCase();
+//     const tone = card.dataset.tone.toLowerCase();
+
+//     const matchesSearch = text.includes(searchValue);
+//     const matchesOccasion = occasionValue === "all" || occasion === occasionValue;
+//     const matchesTone = toneValue === "all" || tone === toneValue;
+
+//     if(matchesSearch && matchesOccasion && matchesTone){
+//       card.style.display = "block";
+//     }else{
+//       card.style.display = "none";
+//     }
+//   });
+// }
+
+// searchInput.addEventListener("input", filterTemplates);
+// occasionfilter.addEventListener("change", filterTemplates);
+// tonefilter.addEventListener("change", filterTemplates);
+
+// function searchContent(){
+//   filterTemplates();
+// }
 
 
 
