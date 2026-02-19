@@ -61,10 +61,11 @@ nav img {
 .hero-head{
   display:grid;
   grid-template-columns:1fr 1fr;
-  min-height:90vh;
+  min-height: 67vh;
   padding:60px;
   align-items:center;
   justify-content: center;
+  /* background-color: #007bff; */
   /* background:linear-gradient(135deg,#FFF8F5,#FDF2F8); */
   /* backdrop-filter: blur(10px); */
 }
@@ -160,10 +161,10 @@ nav img {
 }
 
 /* Positions */
-.float1{ top:40px; left:40px; animation-delay:0s;}
-.float2{ top:120px; right:20px; animation-delay:1s;}
-.float3{ bottom:90px; left:80px; animation-delay:2s;}
-.float4{ bottom:20px; right:80px; animation-delay:3s;}
+.float1{ top:50px; left:40px; animation-delay:0s;}
+.float2{ top:80px; right:40px; animation-delay:1s;}
+.float3{ bottom:220px; left:40px; animation-delay:2s;}
+.float4{ bottom:200px; right:40px; animation-delay:3s;}
 
 @keyframes float{
   0%{ transform:translateY(0px); }
@@ -257,13 +258,13 @@ button:hover {
 }
 
 .events {
-    padding: 3% 5%;
+    padding: 0 5%;
 }
 
 .events h1{
     color: black;
     text-align: center;
-    padding: 40px 0;
+    padding: 20px 0;
 }
 
 .event {
@@ -795,6 +796,7 @@ footer h1 {
     /* width: 100%; */
     max-height: 100px;
     padding: 0 10px;
+    /* background-color: #007bff; */
   }
 
   .hero-head h1{
@@ -867,7 +869,7 @@ footer h1 {
     }
 
     .events{
-        margin-top: -40vh;
+        /* margin-top: -40vh; */
     }
 
     .events h1{
