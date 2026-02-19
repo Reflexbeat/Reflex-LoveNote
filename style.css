@@ -268,6 +268,7 @@ button:hover {
 }
 
 .event {
+    width: 100%;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
 }
@@ -277,7 +278,7 @@ button:hover {
     justify-content: center;
     align-items: center;
     text-align: center;
-    height: 35vh;
+    height: 40vh;
     width: 27vw;
     background-color: #fff;
     box-shadow: 0 15px 40px rgba(0,0,0,0.1);
@@ -795,7 +796,7 @@ footer h1 {
     margin-top: 20vh;
     /* width: 100%; */
     max-height: 100px;
-    padding: 0 10px;
+    padding: 0 20px;
     /* background-color: #007bff; */
   }
 
@@ -841,7 +842,7 @@ footer h1 {
    }
  
 
-    .hero {
+    /* .hero {
         margin-top: 20vh;
         padding: 0 10px;
     }
@@ -863,13 +864,14 @@ footer h1 {
 
     .btn a button {
         /* min-width: max-content; */
-        width: 88vw;
-        height: auto;
-        padding: 12px;
-    }
+        /* width: 88vw; */
+        /* height: auto; */
+        /* padding: 12px; */
+    */
 
     .events{
-        margin-top: -40vh;
+        /* margin-top: -50vh !important; */
+        padding-top: -50vh;
     }
 
     .events h1{
