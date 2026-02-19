@@ -301,7 +301,8 @@ button:hover {
 }
 
 .event a {
-    text-decoration: none !important;
+    cursor: pointer;
+    text-decoration: none;
 }
 
 .event1 img {
@@ -1111,7 +1112,7 @@ footer h1 {
     .event1 {
         width: auto;
         margin: 10px;
-        height: 25vh;
+        height: auto;
     }
 
     .form-container {
