@@ -64,8 +64,9 @@ nav img {
   min-height:90vh;
   padding:60px;
   align-items:center;
+  justify-content: center;
   /* background:linear-gradient(135deg,#FFF8F5,#FDF2F8); */
-  backdrop-filter: blur(10px);
+  /* backdrop-filter: blur(10px); */
 }
 
 .hero-left h1{
@@ -787,10 +788,11 @@ footer h1 {
 
 
   .hero-head{
-    /* grid-template-columns:1fr; */
+    grid-template-columns:1fr;
+    justify-content: center;
     text-align:center;
     /* margin-top: 45px; */
-    width: 100%;
+    /* width: 100%; */
     height: 80vh;
     padding: 0 10px;
   }
@@ -870,7 +872,7 @@ footer h1 {
     }
 
     .events{
-        margin-top: -10vh;
+        margin-top: -20vh;
     }
 
     .events h1{
