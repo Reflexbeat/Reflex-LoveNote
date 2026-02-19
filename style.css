@@ -61,7 +61,8 @@ nav img {
 .hero-head{
   display:grid;
   grid-template-columns:1fr 1fr;
-  min-height: 67vh;
+  /* min-height: 50vh; */
+  height: 85vh;
   padding:60px;
   align-items:center;
   justify-content: center;
@@ -795,7 +796,7 @@ footer h1 {
     text-align:center;
     margin-top: 20vh;
     /* width: 100%; */
-    max-height: 100px;
+    max-height: 60vh;
     padding: 0 20px;
     /* background-color: #007bff; */
   }
@@ -812,6 +813,10 @@ footer h1 {
     font-weight: bold;
     text-align: center;
     padding: 10px;
+  }
+
+  .hero-left{
+    height: auto;
   }
 
   .preview-container{
@@ -872,6 +877,7 @@ footer h1 {
     .events{
         /* margin-top: -50vh !important; */
         padding-top: -50vh;
+
     }
 
     .events h1{
@@ -1058,9 +1064,29 @@ footer h1 {
         gap: 20px;
     }
 
+    .hero-head{
+        height: 85vh;
+    }
+
     .hero h1,
-    .heading h1 {
+    .hero-head h1 {
         font-size: 36px;
+    }
+
+    .float1{
+        top: 20px;
+    }
+
+    .float2{
+        top: 120px;
+    }
+
+    .float3{
+        top: 35vh;
+    }
+
+    .float4{
+        display: none;
     }
 
     .event {
@@ -1070,7 +1096,7 @@ footer h1 {
 
     .event1 {
         width: 90%;
-        margin: auto;
+        margin: 10px;
     }
 
     .form-container {
