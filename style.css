@@ -316,12 +316,13 @@ button:hover {
     color: #FF5A8A;
 }
 
+/* FORM SECTION */
 .form-container {
     position: relative;
     left: 25vw;
     display: block;
     width: 50%;
-    height: 130vh;
+    height: auto;
     justify-content: center;
     align-items: center;
     text-align: center;
@@ -381,7 +382,7 @@ textarea {
     width: 100%;
     border-radius: 10px;
     padding: 10px;
-    background-color: rgb(232,240,254);
+    background-color: linear-gradient(135deg,#FFF8F5,#fab4db);
     /* background-color: rgb(219, 217, 217); */
     color: black;
 }
@@ -394,7 +395,7 @@ textarea {
     border: none;
     outline: none;
     padding: 10px;
-    background-color: rgb(232,240,254);
+    background-color: linear-gradient(135deg,#FFF8F5,#fab4db);
     /* background-color: rgb(219, 217, 217); */
     color: black;
 }
@@ -419,7 +420,7 @@ textarea {
     border-radius: 10px;
     padding-left: 40px;
     border: none;
-    background-color: rgb(232,240,254);
+    background-color: linear-gradient(135deg,#FFF8F5,#fab4db);
     /* background-color: rgb(219, 217, 217); */
     color: black;
 }
@@ -433,17 +434,23 @@ textarea {
 }
 
 .btn2 button {
-    height: 5vh;
+    height: 8vh;
     width: 15vw;
     border: none;
     border-radius: 10px;
-    background-color: rgb(7, 7, 140);
-    color: #fff;
+    background-color: linear-gradient(135deg,#FFF8F5,#fab4db);
+    color: red;
     font-weight: bold;
 }
 
+.btn2 button:hover{
+    background-color: red;
+    color: #fff;
+}
+
 .btn2 button:nth-child(2){
-    background-color: rgb(188, 18, 18);
+    background-color: blue;
+    color: #fff;
 }
 
 #preview {
@@ -463,7 +470,7 @@ textarea {
 
 #link {
     margin-top: 10px;
-    color: brown;
+    color: #FF5A8A;
     word-break: break-all;
 }
 
@@ -591,7 +598,7 @@ footer h1 {
 
 .card {
     position: relative;
-    /* width: 100%/3; */
+    width: auto;
     /* height: 50vh; */
     /* max-height: 40vh; */
     /* overflow: hidden; */
@@ -995,7 +1002,7 @@ footer h1 {
     .card-containner {
         grid-template-columns: 1fr;
         /* stack cards vertically */
-        padding: 10% 20px;
+        padding: 10% 10px;
     }
 
     .card {
@@ -1104,7 +1111,7 @@ footer h1 {
     .event1 {
         width: auto;
         margin: 10px;
-        height: 40vh;
+        height: 55vh;
     }
 
     .form-container {
@@ -1115,6 +1122,30 @@ footer h1 {
 
     .form-container h1 {
         font-size: 36px;
+    }
+
+    .btn2 button{
+        width: 25vw;
+    }
+
+    .l1{
+        margin-left: -15vw;
+    }
+
+    .l2{
+        margin-left: -18vw;
+    }
+
+    .l3{
+        margin-left: -13vw;
+    }
+
+    .l4{
+        margin-left: -16vw;
+    }
+
+    .l5{
+        margin-left: -6vw;
     }
 
     footer{
