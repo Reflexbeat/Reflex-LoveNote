@@ -794,9 +794,9 @@ footer h1 {
     grid-template-columns:1fr;
     justify-content: center;
     text-align:center;
-    margin-top: 20vh;
+    margin-top: 15vh;
     /* width: 100%; */
-    max-height: 50vh;
+    max-height: 45vh;
     padding: 0 20px;
     /* background-color: #007bff; */
   }
@@ -1078,15 +1078,17 @@ footer h1 {
     }
 
     .float2{
-        top: 120px;
+        top: 220px;
+        left: 30px;
     }
 
     .float3{
-        top: 35vh;
+        display: none;
     }
 
     .float4{
-        display: none;
+        top: 100px;
+        height: 20vh;
     }
 
     .events{
