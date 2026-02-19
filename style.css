@@ -932,7 +932,7 @@ footer h1 {
     }
 
     .l5{
-        left: -10vw
+        left: -8vw
     }
 
     .form-container h1 {
@@ -1072,7 +1072,7 @@ footer h1 {
     }
 
     .hero-head{
-        height: 110vh;
+        height: 70vh;
     }
 
     .hero h1,
@@ -1111,7 +1111,7 @@ footer h1 {
     .event1 {
         width: auto;
         margin: 10px;
-        height: 55vh;
+        height: 25vh;
     }
 
     .form-container {
@@ -1154,7 +1154,7 @@ footer h1 {
 
 }
 
-@media(max-width: 300px){
+@media(min-width: 150px) and (max-width: 400px){
     .hero-head{
         height: auto;
     }
@@ -1162,6 +1162,12 @@ footer h1 {
     .events{
         margin-top: 15vh;
     }
+
+    .l1{ margin-left: 10px;}
+    .l2{ margin-left: 15px;}
+    .l3{ margin-left: 20px;}
+    .l4{ margin-left: 10px;}
+    .l5{ margin-left: 40px; font-size: 15px;}
 
     /* .events h1{
         display: none;
