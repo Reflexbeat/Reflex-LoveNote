@@ -1065,7 +1065,7 @@ footer h1 {
     }
 
     .hero-head{
-        height: 95vh;
+        height: 100vh;
     }
 
     .hero h1,
@@ -1090,11 +1090,11 @@ footer h1 {
         display: none;
     }
 
-    .events{
+    /* .events{
         .hero-head{
-            margin-top: 10vh;
+            margin-top: 20vh;
         }
-    }
+    } */
 
     .event {
         grid-template-columns: 1fr 1fr;
@@ -1102,8 +1102,9 @@ footer h1 {
     }
 
     .event1 {
-        width: 90%;
+        width: auto;
         margin: 10px;
+        height: auto;
     }
 
     .form-container {
@@ -1114,6 +1115,10 @@ footer h1 {
 
     .form-container h1 {
         font-size: 36px;
+    }
+
+    footer{
+        height: auto;
     }
 
 
