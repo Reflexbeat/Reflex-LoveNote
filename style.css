@@ -1072,7 +1072,7 @@ footer h1 {
     }
 
     .hero-head{
-        height: 70vh;
+        height: auto;
     }
 
     .hero h1,
