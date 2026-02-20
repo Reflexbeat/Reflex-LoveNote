@@ -442,6 +442,7 @@ textarea {
     background-color: linear-gradient(135deg,#FFF8F5,#fab4db);
     color: red;
     font-weight: bold;
+    cursor: pointer;
 }
 
 .btn2 button:hover{

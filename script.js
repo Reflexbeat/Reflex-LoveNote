@@ -30,7 +30,7 @@ function previewMessage() {
 }
     // if (recipient) header += "Specially To: " + recipient + "\n";
     if (occasion) header += "Happy❤️" + occasion + "<br>";
-    if (theme) header += "Mood:" + theme + "<br>"; 
+    if (theme) header += "Tone:" + theme + "<br>"; 
 
     document.getElementById("preview").innerHTML = header + "<br>" + (msg || "No message yet");
 }
