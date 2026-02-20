@@ -66,9 +66,6 @@ nav img {
   padding:60px;
   align-items:center;
   justify-content: center;
-  /* background-color: #007bff; */
-  /* background:linear-gradient(135deg,#FFF8F5,#FDF2F8); */
-  /* backdrop-filter: blur(10px); */
 }
 
 .hero-left h1{
@@ -97,6 +94,8 @@ nav img {
   border-radius:10px;
   font-size:15px;
   cursor:pointer;
+  border: none;
+  outline: none;
 }
 
 .secondary-btn{
@@ -116,6 +115,7 @@ nav img {
 
 .hero-head a button{
     cursor: pointer;
+    text-decoration: none;
 }
 
 .preview-container{
@@ -803,16 +803,32 @@ footer h1 {
     grid-template-columns:1fr;
     justify-content: center;
     text-align:center;
-    margin-top: 10vh;
+    margin-top: 7vh;
     /* width: 100%; */
     max-height: 40vh;
     padding: 0 20px;
+    background-image: url(./assets/love1.jpg);
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: #fff;
     /* background-color: #007bff; */
+  }
+
+  .hero-head::after{
+    content: "";
+    height: auto;
+    background-color: black;
+    z-index: 1000;
   }
 
   .hero-head h1{
     font-size: 30px;
     margin-top: 20px;
+  }
+
+  .hero-head p{
+    color: #fff;
   }
 
   .hero-head button{
