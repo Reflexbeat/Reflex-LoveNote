@@ -189,3 +189,7 @@ function highLight(text, value){
   const regex = new RegExp(`(${value})`, "gi")
   return text.replace(regex, "<mark>$1</mark>")
 }
+
+
+
+
