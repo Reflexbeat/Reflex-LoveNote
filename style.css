@@ -36,16 +36,29 @@ nav {
     text-decoration: none;
 }
 
-.list a:hover {
+/* .list a:hover {
     border: 1px solid white;
     padding: 2px;
-}
+} */
 
 nav img {
     width: 100px;
     height: 100px;
     border-radius: 50%;
 }
+
+.navivation{
+    position: relative;
+    text-decoration: none;
+    color: #64748b;
+    padding: 6px 0;
+    transition: 0.3s ease;
+}
+
+.navivation:hover{
+    color: #ec4899;
+}
+
 
 .menu-bar {
     display: none;
@@ -948,7 +961,7 @@ footer h1 {
         height: auto;
         padding: 20px;
         border-top: 2px solid #FF5A8A;
-        z-index: 1000;
+        /* z-index: 1000; */
 
     }
 
@@ -1172,10 +1185,10 @@ footer h1 {
         cursor: pointer;
     }
 
-    .event a:hover {
+    /* .event a:hover {
         background-color: blue;
         color: #fff;
-    }
+    } */
 
     .form-container {
         left: 0;
