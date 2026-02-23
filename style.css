@@ -57,6 +57,9 @@ nav img {
 
 .navivation:hover{
     color: #ec4899;
+    background-color: white;
+    padding: 5px;
+    border-radius: 10px;
 }
 
 
@@ -705,7 +708,7 @@ footer h1 {
     outline: none;
     padding: 10px 20px;
     border-radius: 30px;
-    border: none;
+    border: 1px solid black;
     font-size: 15px;
     margin-top: 50px;
 }
