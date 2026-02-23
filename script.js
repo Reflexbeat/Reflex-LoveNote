@@ -16,85 +16,161 @@ function createEmoji() {
 setInterval(createEmoji , 500);
 
 //preview message
+function triggerImageUpload(){
+  document.getElementById("imageInput").click();
+}
+
+let selectedImageBase64 = "";  
+
+const imageInputEl = document.getElementById("imageInput");
+
+if (imageInputEl) {
+    imageInputEl.addEventListener("change", function () {
+        const file = this.files[0];
+        if (!file) return;
+
+        const reader = new FileReader();
+        reader.onload = function (e) {
+            selectedImageBase64 = e.target.result;  // store image
+
+            // ✅ SHOW IMAGE IN UI
+            const previewImg = document.getElementById("previewImage");
+            const placeholder = document.getElementById("uploadPlaceholder");
+
+            previewImg.src = selectedImageBase64;
+            previewImg.style.display = "block";
+
+            // ✅ HIDE PLACEHOLDER
+            placeholder.style.display = "none";
+        };
+        reader.readAsDataURL(file);
+    });
+}
+
+ //PREVIEW MESSAGE
 function previewMessage() {
-    const recipient = document.getElementById("recipient").value;
-    const occasion = document.getElementById("occasion").value;
-    const theme = document.getElementById("theme").value;
-    const msg = document.getElementById("message").value ;
-    // document.getElementById("preview").innerText = "preview:\n" + msg;
+    const sender = document.getElementById("sender")?.value || "";
+    const recipient = document.getElementById("recipient")?.value || "";
+    const occasion = document.getElementById("occasion")?.value || "";
+    const theme = document.getElementById("theme")?.value || "";
+    const msg = document.getElementById("message")?.value || "";
 
-    let header =""
-    if (recipient) {
-  header += "<div style=' font-size:30px; color:red; height:12vh; padding:8px; font-weight:bold;'>Dear " 
-          + recipient + "</div>";
+    let cardHTML = "";
+
+    if(selectedImageBase64){
+        cardHTML += `
+          <div class="card-image">
+            <img src="${selectedImageBase64}">
+          </div>
+        `;
+    }
+
+    cardHTML += `
+      <div class="card-text">
+        ${sender ? `<h4>From: ${sender}</h4>` : ""}
+        ${recipient ? `<h2>To: ${recipient}</h2>` : ""}
+        ${occasion ? `<h4>Happy ${occasion}</h4>` : ""}
+        ${theme ? `<span class="tone">${theme}</span>` : ""}
+        <p>${msg || "No message yet"}</p>
+      </div>
+
+      <div class="brand">LoveStack 💖</div>
+      </div>
+    `;
+
+    document.getElementById("preview").innerHTML = cardHTML;
 }
-    // if (recipient) header += "Specially To: " + recipient + "\n";
-    if (occasion) header += "Happy❤️" + occasion + "<br>";
-    if (theme) header += "Tone:" + theme + "<br>"; 
 
-    document.getElementById("preview").innerHTML = header + "<br>" + (msg || "No message yet");
-}
 
-let generatedLink = ""; // global variable to hold the string link
+//GENERATE SHARE LINK
+let generatedLink = "";
 
-function generateLink() {
-    const sender = document.getElementById("sender").value;
-    const recipient = document.getElementById("recipient").value;
-    const occasion = document.getElementById("occasion").value;
-    const theme = document.getElementById("theme").value;
-    const msg = document.getElementById("message").value;
+function openPreview() {
+    const sender = document.getElementById("sender")?.value || "";
+    const recipient = document.getElementById("recipient")?.value || "";
+    const occasion = document.getElementById("occasion")?.value || "";
+    const theme = document.getElementById("theme")?.value || "";
+    const msg = document.getElementById("message")?.value || "";
 
     if (!msg) {
         alert("please enter a message");
         return;
     }
 
-    const data = { sender, recipient, occasion, theme, msg };
-    const encoded = encodeURIComponent(JSON.stringify(data));
-    const link = window.location.origin + window.location.pathname + "?data=" + encoded;
+    //DATA OBJECT (UPDATED)
+    const data = { 
+        sender, 
+        recipient, 
+        occasion, 
+        theme, 
+        msg,
+        image: selectedImageBase64 || "",
+        // frame: selectedFrame || "",
+        // layout: selectedLayout || "",
+        // time: Date.now() 
+    };
 
-    // ✅ Save the string link globally
+    // const encoded = encodeURIComponent(JSON.stringify(data));
+    sessionStorage.setItem("lovestack_preview", JSON.stringify(data));
+
+    window.open("preview.html", "_blank");
+    // function openPreview(){
+    //   savedPreview();
+    //   window.open("preview.html", "_blank");
+    // }
+
+    // window.open(`./preview.html?data=${encoded}`, "_blank");
+    // const link = window.location.origin + window.location.pathname + "?data=" + encoded;
+
     generatedLink = link;
 
-    // ✅ Display the link
     document.getElementById("link").innerHTML =
         `Share this link: <a href="${link}" target="_blank">${link}</a>`;
 
-    // ✅ Show share buttons only after link is created
     document.getElementById("share-buttons").style.display = "block";
 }
 
-// WhatsApp share
-// function shareWhatsapp() {
-//     const url = "https://wa.me/?text=" + encodeURIComponent("Check out this message: " + generatedLink);
-//     window.open(url, "_blank");
-// }
 
-// Copy link
+//COPY LINK
 function copyLink() {
     navigator.clipboard.writeText(generatedLink).then(() => {
         alert("Link copied to clipboard!");
     });
 }
 
-window.onload = () => {
+
+//LOAD PREVIEW FROM SHARED LINK
+window.addEventListener("DOMContentLoaded", () => {
     const params = new URLSearchParams(window.location.search);
     const data = params.get("data");
+
     if (data) {
         try {
             const parsed = JSON.parse(decodeURIComponent(data));
             let header = "";
+
             if (parsed.sender) header += `From: ${parsed.sender}<br>`;
             if (parsed.recipient) header += `To: ${parsed.recipient}<br>`;
             if (parsed.occasion) header += `Occasion: ${parsed.occasion}<br>`;
             if (parsed.theme) header += `Theme: ${parsed.theme}<br>`;
 
-            document.getElementById("preview").innerHTML = header + "<br>Message:<br>" + parsed.msg;
+            let imageHTML = "";
+
+            if (parsed.image) {
+                imageHTML = `<img src="${parsed.image}" 
+                                style="max-width:100%; border-radius:14px; margin:15px 0;">`;
+            }
+
+            document.getElementById("preview").innerHTML = 
+                header + imageHTML + "<br>Message:<br>" + parsed.msg;
+
         } catch (e) {
             document.getElementById("preview").innerText = "Invalid message data";
         }
     }
-};
+});
+
+
 
 
 //PAGE1 Script
@@ -140,6 +216,8 @@ document.querySelectorAll(".copy-btn").forEach(btn => {
     });
   });
 });
+
+
 
 //Menu Bar
 const menuIcons = document.getElementById("menu-icon");

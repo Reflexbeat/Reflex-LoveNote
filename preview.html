@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+
+
+    <title>Preview Message</title>
+    <style>
+        body {
+            margin: 0;
+            min-height: 100vh;
+            /* background:linear-gradient(135deg,#fff0f5,#fdf7ff); */
+            background: linear-gradient(135deg, #FFF8F5, #fab4db);
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            transition: background-color 0.3s, color 0.3s;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            /* font-family:system-ui; */
+        }
+
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 15vh;
+            background-color: #810d47;
+            /* margin:20px 100px; */
+        }
+
+        nav img {
+            height: 100px;
+            width: 100px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #ec4899;
+            background-color: white;
+            padding: 2px;
+            border-radius: 5px;
+        }
+
+        .logo {
+            margin-left: 5%;
+        }
+
+        .link {
+            margin-right: 5%;
+        }
+
+        .lovestack-card {
+            margin-top: 20vh;
+            max-width: 650px;
+            width: 100%;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.2);
+            background: #FF5A8A;
+            /* background: rgb(211, 200, 200); */
+            animation: pop .6s ease;
+        }
+
+        @keyframes pop {
+            from {
+                transform: scale(.9);
+                opacity: 0
+            }
+
+            to {
+                transform: scale(1);
+                opacity: 1
+            }
+        }
+
+        .card-image {
+            width: 100%;
+            height: auto;
+            overflow: hidden;
+        }
+
+        .card-image img {
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+        }
+
+        .card-text {
+            padding: 20px;
+            text-align: center;
+        }
+
+        .card-text h2 {
+            margin: 2px 0;
+        }
+
+        .card-text h3 {
+            margin: 2px 0;
+            color: #e91e63;
+        }
+
+        .tone {
+            display: inline-block;
+            padding: 6px 14px;
+            /* background:#ffe4ec; */
+            background: linear-gradient(135deg, #FFF8F5, #fab4db);
+            border-radius: 20px;
+            font-size: 12px;
+            margin: 8px 0;
+        }
+
+        .card-text p {
+            text-align: justify;
+            line-height: 2;
+            padding: 0 10px;
+            /* font-size: 16px; */
+        }
+
+        .brand {
+            text-align: center;
+            padding: 12px;
+            font-weight: bold;
+            /* background:#fafafa; */
+            background: linear-gradient(135deg, #FFF8F5, #fab4db);
+            border-top: 1px solid #eee;
+            font-size: smaller;
+            /* opacity: 0.6; */
+        }
+
+        /* ===== MAIN WRAPPER ===== */
+        .preview-wrapper {
+            min-height: 100vh;
+            width: 100%;
+            /* background: radial-gradient(circle at top, #1a1a24, #0b0b10); */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 30px 15px;
+            box-sizing: border-box;
+        }
+
+        /* ===== PREVIEW CONTAINER ===== */
+        #preview {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            margin-bottom: 22px;
+        }
+
+        /* ===== ACTION BUTTONS ===== */
+        .preview-actions {
+            display: flex;
+            gap: 14px;
+            width: 100%;
+            max-width: 420px;
+        }
+
+        /* ===== BUTTONS ===== */
+        .preview-actions button {
+            flex: 1;
+            padding: 14px 16px;
+            border-radius: 14px;
+            border: none;
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.25s ease;
+            letter-spacing: 0.3px;
+        }
+
+        /* DOWNLOAD BUTTON */
+        .preview-actions button:first-child {
+            background: linear-gradient(135deg, #ff5fa2, #ff2f7d);
+            color: white;
+            box-shadow: 0 8px 18px rgba(255, 47, 125, 0.35);
+        }
+
+        /* WHATSAPP BUTTON */
+        .preview-actions button:nth-child(2) {
+            background: linear-gradient(135deg, #25D366, #128C7E);
+            color: white;
+            box-shadow: 0 8px 18px rgba(18, 140, 126, 0.35);
+        }
+
+        .preview-actions button:nth-child(3) {
+            /* background: linear-gradient(135deg, #7c3aed, #5b21b6); */
+            background: white;
+            color: red;
+            box-shadow: 0 8px 18px rgba(91, 33, 182, 0.35);
+        }
+
+        /* HOVER EFFECTS */
+        .preview-actions button:hover {
+            transform: translateY(-2px);
+            filter: brightness(1.05);
+        }
+
+        /* ACTIVE */
+        .preview-actions button:active {
+            transform: scale(0.97);
+        }
+
+        /* ===== EXPORT MODE ===== */
+        /* .export-mode body,
+        .export-mode .preview-wrapper {
+            background: #ffffff !important;
+        } */
+
+        .export-mode .lovestack-card {
+            box-shadow: none !important;
+            background: linear-gradient(135deg, #FFF8F5, #fab4db) !important;
+        }
+
+        /* .export-mode .brand,
+        .export-mode .tone {
+            background: #ffffff !important;
+        } */
+
+        footer {
+            display: none;
+            position: absolute;
+            /* top: 50; */
+            width: 100%;
+            height: auto;
+            margin-top: 100%;
+            text-align: center;
+            background-color: #810d47;
+            padding: 20px;
+        }
+
+        .socials {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: x-large;
+            color: white;
+            margin-bottom: 20px;
+            gap: 40px;
+        }
+
+        .socials a {
+            color: orange;
+        }
+
+        .pp {
+            font-size: x-small;
+            padding-bottom: 30px;
+            color: white;
+        }
+
+        @media (max-width: 600px) {
+            footer{
+                display: none;
+                position: absolute;
+                margin-top: 300%;
+            }
+            .preview-actions {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <nav>
+        <div class="logo"><img src="./assets/new.png" alt=""></div>
+        <div class="link"><a href="./message.html">Create Message</a></div>
+    </nav>
+
+    <div class="preview-wrapper">
+        <div id="preview"></div>
+
+
+        <div class="preview-actions">
+            <button onclick="downloadCardPDF()">Download</button>
+            <button onclick="shareWhatsApp()">WhatsApp</button>
+            <button onclick="generatePublicLink()">Generate Link</button>
+        </div>
+
+        <div class="share-link-box" id="shareLinkBox" style="display:none;">
+            <p>Share this link:</p>
+            <div class="share-link-row">
+                <input type="text" id="shareLinkInput" readonly>
+                <button onclick="copyShareLink()">Copy</button>
+            </div>
+        </div>
+
+    </div>
+    <footer>
+        <!-- <h4>Contact Us</h4> -->
+        <div class="socials">
+            <a href="https://www.instagram.com/reflexbeat?igsh=dGwzOXh4N3UxeGw0&utm_source=qr"><i
+                    class="fab fa-instagram-square"></i></a>
+            <a href="https://www.facebook.com/share/1CNqXwe85d/?mibextid=wwXIfr"><i
+                    class="fab fa-facebook-square"></i></a>
+            <a href="https://www.tiktok.com/@deridazofficial?_r=1&_t=ZS-93zB9YSueG7"><i class="fab fa-tiktok"></i></a>
+        </div>
+        <p class="pp">&copy;2026 LoveStack By Reflex, All Rights Reserved.</p>
+    </footer>
+
+
+
+    <script>
+        const stored = sessionStorage.getItem("lovestack_preview");
+
+        let data = null;   // 🔥 GLOBAL DATA ACCESS
+
+        if (stored) {
+            try {
+                data = JSON.parse(stored);
+
+                let cardHTML = `
+          <div class="lovestack-card ${data.frame || ""} ${data.layout || ""}" id="cardToDownload">
+        `;
+
+                /* ===== IMAGE SECTION ===== */
+                if (data.image) {
+                    cardHTML += `
+              <div class="card-image">
+                <img src="${data.image}">
+              </div>
+            `;
+                }
+
+                /* ===== TEXT SECTION ===== */
+                cardHTML += `
+          <div class="card-text">
+            ${data.sender ? `<h4>From: ${data.sender}</h4>` : ""}
+            ${data.recipient ? `<h2>To: ${data.recipient}</h2>` : ""}
+            ${data.occasion ? `<h4>Happy ${data.occasion}</h4>` : ""}
+            ${data.theme ? `<span class="tone">${data.theme}</span>` : ""}
+            <p>${data.msg || ""}</p>
+          </div>
+
+          <div class="brand">LoveStack 💖</div>
+          </div>
+        `;
+
+                document.getElementById("preview").innerHTML = cardHTML;
+
+            } catch (e) {
+                document.body.innerHTML = "Invalid preview data";
+            }
+        } else {
+            document.body.innerHTML = "No preview data found";
+        }
+
+        //    whatsapp
+        function shareWhatsApp() {
+            if (!data) return;
+
+            const text = ` LoveStack Message
+
+${data.recipient ? "To: " + data.recipient : ""}
+${data.sender ? "From: " + data.sender : ""}
+
+${data.msg}
+
+
+Create yours on LoveStack 💌`;
+
+            const url = `https://wa.me/?text=${encodeURIComponent(text)}`;
+            window.open(url, "_blank");
+        }
+
+        function downloadCardPDF() {
+            const { jsPDF } = window.jspdf;
+            const doc = new jsPDF("p", "mm", [200, 260]);
+
+            const pageWidth = doc.internal.pageSize.getWidth();
+            const pageHeight = doc.internal.pageSize.getHeight();
+
+            // === BACKGROUND COLOR ===
+            doc.setFillColor(255, 248, 245); // pastel pink
+            doc.rect(0, 0, pageWidth, pageHeight, "F");
+
+            // === BORDER FRAME ===
+            doc.setDrawColor(250, 180, 219); // soft pink border
+            doc.setLineWidth(2);
+            doc.roundedRect(10, 10, pageWidth - 20, pageHeight - 10, 12, 12, "S");
+
+            let yPos = 30;
+
+            // === IMAGE WITH ROUNDED CORNERS + SHADOW ===
+            if (data.image) {
+                const img = new Image();
+                img.crossOrigin = "anonymous";
+                img.src = data.image;
+
+                img.onload = function () {
+                    const imgWidth = 130;
+                    const imgHeight = 100;
+                    const xCenter = (pageWidth - imgWidth) / 2;
+
+                    // Drop shadow rectangle (slightly offset)
+                    doc.setFillColor(200, 200, 200); // light gray shadow
+                    doc.roundedRect(xCenter + 3, yPos + 3, imgWidth, imgHeight, 20, 10, "F");
+
+                    // Rounded white background for the image
+                    doc.setFillColor(255, 255, 255);
+                    doc.roundedRect(xCenter, yPos, imgWidth, imgHeight, 10, 10, "F");
+
+                    // Place the image
+                    doc.addImage(img, "JPEG", xCenter, yPos, imgWidth, imgHeight);
+
+                    yPos += imgHeight + 20;
+                    addTextContent(doc, yPos, pageWidth, pageHeight);
+                };
+            } else {
+                addTextContent(doc, yPos, pageWidth, pageHeight);
+            }
+        }
+
+        function addTextContent(doc, yPos, pageWidth, pageHeight) {
+            if (data.sender) {
+                doc.setFont("helvetica", "bold");
+                doc.setFontSize(14);
+                doc.text(`From: ${data.sender}`, 20, yPos);
+                yPos += 12;
+            }
+
+            if (data.recipient) {
+                doc.setFontSize(16);
+                doc.text(`To: ${data.recipient}`, 20, yPos);
+                yPos += 15;
+            }
+
+            if (data.occasion) {
+                doc.setFont("helvetica", "italic");
+                doc.setFontSize(14);
+                doc.text(`Happy ${data.occasion}`, 20, yPos);
+                yPos += 15;
+            }
+
+            doc.setFont("helvetica", "normal");
+            doc.setFontSize(12);
+            doc.text(data.msg || "", 20, yPos, { maxWidth: pageWidth - 40 });
+            yPos += 40;
+
+            doc.setFontSize(10);
+            doc.text("LoveStack", pageWidth / 2, pageHeight - 5, { align: "center" });
+
+            doc.save("lovestack-card.pdf");
+        }
+
+        function generatePublicLink() {
+            const stored = sessionStorage.getItem("lovestack_preview");
+            if (!stored) {
+                alert("No card data found");
+                return;
+            }
+
+            const encoded = encodeURIComponent(stored);
+            const link = `${window.location.origin}/preview.html?data=${encoded}`;
+
+            document.getElementById("shareLinkInput").value = link;
+            document.getElementById("shareLinkBox").style.display = "block";
+        }
+
+        function copyShareLink() {
+            const input = document.getElementById("shareLinkInput");
+            input.select();
+            input.setSelectionRange(0, 99999);
+            navigator.clipboard.writeText(input.value);
+            alert("Link copied 💖");
+        }
+
+        // function downloadCardPDF() {
+        //     const { jsPDF } = window.jspdf;
+
+        //     // Estimate content height
+        //     let contentHeight = 40; // base padding
+        //     if (data.image) contentHeight += 90; // image space
+        //     if (data.sender) contentHeight += 15;
+        //     if (data.recipient) contentHeight += 20;
+        //     if (data.occasion) contentHeight += 20;
+        //     if (data.msg) {
+        //         const lineCount = Math.ceil(data.msg.length / 60);
+        //         contentHeight += lineCount * 6;
+        //     }
+        //     contentHeight += 40; // footer space
+
+        //     // Minimum height safeguard
+        //     if (contentHeight < 150) contentHeight = 150;
+
+        //     // Create PDF with dynamic height
+        //     const doc = new jsPDF("p", "mm", [210, contentHeight]);
+
+        //     const pageWidth = doc.internal.pageSize.getWidth();
+        //     const pageHeight = doc.internal.pageSize.getHeight();
+
+        //     // Background + border
+        //     doc.setFillColor(255, 248, 245);
+        //     doc.rect(0, 0, pageWidth, pageHeight, "F");
+        //     doc.setDrawColor(250, 180, 219);
+        //     doc.setLineWidth(2);
+        //     doc.roundedRect(10, 10, pageWidth - 20, pageHeight - 10, 12, 12, "S");
+
+        //     let yPos = 30;
+
+        //     // Image with rounded corners + shadow
+        //     if (data.image) {
+        //         const img = new Image();
+        //         img.crossOrigin = "anonymous";
+        //         img.src = data.image;
+
+        //         img.onload = function () {
+        //             const imgWidth = 120;
+        //             const imgHeight = 80;
+        //             const xCenter = (pageWidth - imgWidth) / 2;
+
+        //             // Shadow
+        //             doc.setFillColor(200, 200, 200);
+        //             doc.roundedRect(xCenter + 3, yPos + 3, imgWidth, imgHeight, 10, 10, "F");
+
+        //             // Rounded background
+        //             doc.setFillColor(255, 255, 255);
+        //             doc.roundedRect(xCenter, yPos, imgWidth, imgHeight, 10, 10, "F");
+
+        //             // Image
+        //             doc.addImage(img, "JPEG", xCenter, yPos, imgWidth, imgHeight);
+
+        //             yPos += imgHeight + 20;
+        //             addTextContent(doc, yPos, pageWidth, pageHeight);
+        //         };
+        //     } else {
+        //         addTextContent(doc, yPos, pageWidth, pageHeight);
+        //     }
+        // }
+
+        // function addTextContent(doc, yPos, pageWidth, pageHeight) {
+        //     if (data.sender) {
+        //         doc.setFont("helvetica", "bold");
+        //         doc.setFontSize(14);
+        //         doc.text(`From: ${data.sender}`, 20, yPos);
+        //         yPos += 12;
+        //     }
+
+        //     if (data.recipient) {
+        //         doc.setFontSize(16);
+        //         doc.text(`To: ${data.recipient}`, 20, yPos);
+        //         yPos += 15;
+        //     }
+
+        //     if (data.occasion) {
+        //         doc.setFont("helvetica", "italic");
+        //         doc.setFontSize(14);
+        //         doc.text(`Happy ${data.occasion}`, 20, yPos);
+        //         yPos += 15;
+        //     }
+
+        //     // Message body with wrapping
+        //     doc.setFont("helvetica", "normal");
+        //     doc.setFontSize(12);
+        //     const wrappedText = doc.splitTextToSize(data.msg || "", pageWidth - 40);
+        //     doc.text(wrappedText, 20, yPos);
+        //     yPos += wrappedText.length * 6;
+
+        //     // Footer
+        //     doc.setFontSize(10);
+        //     doc.text("LoveStack", pageWidth / 2, pageHeight - 5, { align: "center" });
+
+        //     doc.save("lovestack-card.pdf");
+        // }
+
+
+
+
+        // function downloadCard() {
+        //     const card = document.querySelector(".lovestack-card");
+
+        //     // Enable export mode
+        //     document.body.classList.add("export-mode");
+
+        //     html2canvas(card, {
+        //         useCORS: true,
+        //         scale: 4, // Try 4 for sharper text
+        //         backgroundColor: "#ffffff"
+        //     }).then(canvas => {
+        //         const link = document.createElement("a");
+        //         link.download = "lovestack-card.png";
+        //         link.href = canvas.toDataURL("image/png", 1.0); // Force max quality
+        //         link.click();
+
+        //         // Disable export mode
+        //         document.body.classList.remove("export-mode");
+        //     });
+        // }
+
+
+
+        // function downloadCard() {
+        //     const wrapper = document.querySelector(".preview-wrapper");
+        //     const card = document.querySelector(".lovestack-card");
+
+        //     // ✅ enable export mode
+        //     document.body.classList.add("export-mode");
+
+        //     html2canvas(card, {
+        //         useCORS: true,
+        //         scale: 3,
+        //         backgroundColor: "#ffffff"
+        //     }).then(canvas => {
+
+        //         const link = document.createElement("a");
+        //         link.download = "lovestack-card.png";
+        //         link.href = canvas.toDataURL("image/png");
+        //         link.click();
+
+        //         // ✅ disable export mode after capture
+        //         document.body.classList.remove("export-mode");
+        //     });
+        // }
+    </script>
+
+</body>
+
+</html>
