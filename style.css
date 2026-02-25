@@ -302,6 +302,65 @@ button:hover {
     opacity: 0.9;
 }
 
+.emotions {
+    padding: 0 5%;
+}
+
+.emotions h1 {
+    color: black;
+    text-align: center;
+    padding: 20px 0;
+}
+
+.emotion {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+.emotion1 {
+    display: block;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    height: 40vh;
+    width: 27vw;
+    background-color: #fff;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+    gap: 30px;
+    margin-bottom: 30px;
+    color: black;
+    border-top: 2px solid #FF5A8A;
+    border-radius: 20px;
+    padding: 50px 5px;
+    transition: transform 0.3s ease box-shadow 0.3s ease;
+}
+
+.emotion1:hover {
+    transform: scale(1.05);
+    /* box-shadow: 0 8px 20px rgba(0,0,0,0.4); */
+    box-shadow: 0 0 25px rgba(230, 180, 180, 0.3);
+    filter: brightness(1.1);
+    /* background-color: #FF5A8A; */
+}
+
+.emotion a {
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.emotion1 img {
+    width: 60px;
+    height: 40px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+}
+
+.emotion1 h4 {
+    margin-bottom: 10px;
+    color: #FF5A8A;
+}
+
 .events {
     padding: 0 5%;
 }
@@ -1046,7 +1105,21 @@ footer h1 {
     /* width: 88vw; */
     /* height: auto; */
     /* padding: 12px; */
-    */ .events {
+    .emotions {
+        /* margin-top: -50vh !important; */
+        padding-top: -50vh;
+
+    }
+
+    .emotions h1 {
+        font-size: 20px;
+    }
+
+    .emotion {
+        grid-template-columns: 1fr;
+        /* stack events vertically */
+    }
+    .events {
         /* margin-top: -50vh !important; */
         padding-top: -50vh;
 
